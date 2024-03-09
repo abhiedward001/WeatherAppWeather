@@ -1,0 +1,7 @@
+node_modules
+dist
+
+.parcel-cache/data.mdb
+.parcel-cache/
+.firebase/
+.firebaserc/
