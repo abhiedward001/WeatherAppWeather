@@ -6,6 +6,6 @@ const baseUrl='https://api.tomorrow.io/v4/weather';
 export const fetchWeatherData=(information,searchParams)=>{
     const newUrl=new URL(baseUrl + "/" + information );
     newUrl.search=new URLSearchParams({...searchParams,apikey:apiKey3});
-    // console.log(newUrl.href);
+    console.log(newUrl.href);
     return newUrl.href;
 }

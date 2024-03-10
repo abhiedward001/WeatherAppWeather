@@ -23,9 +23,6 @@ function TemperatureDetails() {
     const weatherData = useSelector(store => store.weather.data);
     const units=useSelector(store => store.weather.units);
     const foreCastData=useSelector(store => store.weather.forecast);
-    console.log(typeof(foreCastData));
-    console.log((foreCastData));
-
 
     return (
         <div>
@@ -40,30 +37,30 @@ function TemperatureDetails() {
 
                 <div className='flex flex-col space-y-2'>
 
-                    <div className='flex font-light text-sn items-center justify-center'>
+                    <div className='flex font-light text-sn items-center '>
                         <UilTemperature size={18} className='mr-1'></UilTemperature>
                         Temp:
                         <span className='font-medium ml-1'>{weatherData.temperature}° {(units === "metric") ? 'C' : 'F'}</span>
                     </div>
-                    <div className='flex font-light text-sn items-center justify-center'>
+                    <div className='flex font-light text-sn items-center '>
                         <UilTear size={18} className='mr-1'></UilTear>
                         Humidity:
-                        <span className='font-medium ml-1'>{weatherData.humidity}</span>
+                        <span className='font-medium ml-1'>{`${weatherData.humidity} %`}</span>
                     </div>
-                    <div className='flex font-light text-sn items-center justify-center'>
+                    <div className='flex font-light text-sn items-center '>
                         <UilWind size={18} className='mr-1'></UilWind>
                         Wind Speed:
-                        <span className='font-medium ml-1'>{weatherData.windSpeed}</span>
+                        <span className='font-medium ml-1'>{`${weatherData.windSpeed} ${(units === "metric") ? 'm/s' : 'mph'}`}</span>
                     </div>
-                    <div className='flex font-light text-sn items-center justify-center'>
+                    <div className='flex font-light text-sn items-center '>
                         <UilBrightness size={18} className='mr-1'></UilBrightness>
                         UvIndex:
                         <span className='font-medium ml-1'>{weatherData.uvIndex}</span>
                     </div>
-                    <div className='flex font-light text-sn items-center justify-center'>
+                    <div className='flex font-light text-sn items-center '>
                         <UilEye size={18} className='mr-1'></UilEye>
                         Visibility:
-                        <span className='font-medium ml-1'>{weatherData.visibility}</span>
+                        <span className='font-medium ml-1'>{`${weatherData.visibility} ${(units === "metric") ? 'km' : 'mi'}` }</span>
                     </div>
                 </div>
 
@@ -98,9 +95,9 @@ function TemperatureDetails() {
                 </p>
             </div>
             
-            <Forecast title="Minute Forecast" minuteData={foreCastData}></Forecast>
-            <Forecast title="Hourly Forecast" hourData={foreCastData}></Forecast>
-            <Forecast title="Daily Forecast" dailyData={foreCastData}></Forecast>
+            <Forecast title="Minute Forecast" data={foreCastData[0]}></Forecast>
+            <Forecast title="Hourly Forecast" data={foreCastData[1]}></Forecast>
+            <Forecast title="Daily Forecast" data={foreCastData[2]}></Forecast>
             
           
           
