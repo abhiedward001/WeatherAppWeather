@@ -21,6 +21,10 @@ function TemperatureDetails() {
    
     
     const weatherData = useSelector(store => store.weather.data);
+    const units=useSelector(store => store.weather.units);
+    const foreCastData=useSelector(store => store.weather.forecast);
+    console.log(typeof(foreCastData));
+    console.log((foreCastData));
 
 
     return (
@@ -32,14 +36,14 @@ function TemperatureDetails() {
             <div className='flex flex-row items-center justify-between my-4 py-2'>
 
                 <UilCircle size={25} className='text-yellow-500 bg-yellow-500 rounded-full'></UilCircle>
-                <p className='text-5xl text-white'>{weatherData.temperature} °C</p>
+                <p className='text-5xl text-white'>{weatherData.temperature} °{(units === "metric") ? 'C' : 'F'}</p>
 
                 <div className='flex flex-col space-y-2'>
 
                     <div className='flex font-light text-sn items-center justify-center'>
                         <UilTemperature size={18} className='mr-1'></UilTemperature>
                         Temp:
-                        <span className='font-medium ml-1'>{weatherData.temperature}°</span>
+                        <span className='font-medium ml-1'>{weatherData.temperature}° {(units === "metric") ? 'C' : 'F'}</span>
                     </div>
                     <div className='flex font-light text-sn items-center justify-center'>
                         <UilTear size={18} className='mr-1'></UilTear>
@@ -93,9 +97,13 @@ function TemperatureDetails() {
                     <span className='font-medium ml-1'>17°</span>
                 </p>
             </div>
-            <Forecast title="Minute Forecast"></Forecast>
-            <Forecast title="Hourly Forecast"></Forecast>
-            <Forecast title="Daily Forecast"></Forecast>
+            
+            <Forecast title="Minute Forecast" minuteData={foreCastData}></Forecast>
+            <Forecast title="Hourly Forecast" hourData={foreCastData}></Forecast>
+            <Forecast title="Daily Forecast" dailyData={foreCastData}></Forecast>
+            
+          
+          
         </div>
     )
 }

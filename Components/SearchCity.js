@@ -4,13 +4,13 @@ import { UilUserLocation } from '@iconscout/react-unicons'
 import { useState } from 'react';
 import { fetchWeatherData } from '../Utils/apiService'
 import { apiCall } from '../Utils/FetchData';
-import { useDispatch } from 'react-redux';
-import { updateData } from '../Store/weatherSlice';
+import { useDispatch,useSelector } from 'react-redux';
+import { updateCity, updateData,updateUnit } from '../Store/weatherSlice';
 
 function SearchCity() {
 
     const dispatch = useDispatch();
-
+    const city=useSelector(store => store.weather.city);
     // Create a state variable for input of searchbar
     const [inputCity, setInputCity] = useState('');
 
@@ -21,11 +21,15 @@ function SearchCity() {
         // console.log(inputCity);
     }
 
-    const cityDataHandler = async(input) => {
+    const cityDataHandler = async(input,unit) => {
         // console.log(input)
-        const apiUrl = fetchWeatherData('realtime', { location:input });
+        const apiUrl = fetchWeatherData('realtime', { location:input ,units:unit});
+        console.log(apiUrl);
         const newWeatherData = await apiCall(apiUrl);
         dispatch(updateData(newWeatherData));
+        dispatch(updateUnit(unit));
+        dispatch(updateCity(input));
+        setInputCity('');
     }
 
 
@@ -40,13 +44,13 @@ function SearchCity() {
                     onChange={inputChangeHandler}
                 >
                 </input>
-                <button onClick={() => cityDataHandler(inputCity)}><UilSearchAlt size={25} className='text-white cursor-pointer transform ease-out hover:scale-125'></UilSearchAlt></button>
+                <button onClick={() => cityDataHandler(inputCity,"metric")}><UilSearchAlt size={25} className='text-white cursor-pointer transform ease-out hover:scale-125'></UilSearchAlt></button>
                 <UilUserLocation size={25} className='text-white cursor-pointer transform ease-out hover:scale-125'></UilUserLocation>
             </div>
             <div className='flex flex-row w-1/4 items-center justify-center'>
-                <button className='text-white text-xl font-medium'>°C</button>
+                <button className='text-white text-xl font-medium' onClick={() => cityDataHandler(inputCity,"metric")}>°C</button>
                 <p className='text-white mx-2'>|</p>
-                <button className='text-white text-xl font-medium'>°F</button>
+                <button className='text-white text-xl font-medium' onClick={() => cityDataHandler(inputCity,"imperial")}>°F</button>
             </div>
 
         </div>

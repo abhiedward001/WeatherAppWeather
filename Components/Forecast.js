@@ -1,7 +1,10 @@
 import React from 'react'
-import { UilCloudSun } from '@iconscout/react-unicons';
+import { UilCloudSun,UilClouds,UilCloudShowers } from '@iconscout/react-unicons';
+import { useSelector } from 'react-redux';
 
-function Forecast({title}) {
+function Forecast(props) {
+    let title=props.title;
+    let minuteData=props.minuteData;
     return (
         <div>
             <div className='flex items-center justify-start mt-6'>
@@ -12,27 +15,6 @@ function Forecast({title}) {
             <div className='flex flex-row items-center justify-between text-white'>
                 <div className='flex- flex-col items-center justify-center'>
                     <p>2:00 pm</p>
-                    <UilCloudSun size={25} className='text-orange-400'></UilCloudSun>
-                    <p>19°</p>
-                </div>
-                <div className='flex- flex-col items-center justify-center'>
-                    <p>2:00 pm</p>
-                    <UilCloudSun size={25} className='text-orange-400'></UilCloudSun>
-                    <p>19°</p>
-                </div>
-                <div className='flex- flex-col items-center justify-center'>
-                    <p>2:00 pm</p>
-                    <UilCloudSun size={25} className='text-orange-400'></UilCloudSun>
-                    <p>19°</p>
-                </div>
-                <div className='flex- flex-col items-center justify-center'>
-                    <p>2:00 pm</p>
-                    <UilCloudSun size={25} className='text-orange-400'></UilCloudSun>
-                    <p>19°</p>
-                </div>
-                <div className='flex- flex-col items-center justify-center'>
-                    <p>2:00 pm</p>
-                    <UilCloudSun size={25} className='text-orange-400'></UilCloudSun>
                     <p>19°</p>
                 </div>
             </div>
