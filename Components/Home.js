@@ -66,7 +66,7 @@ function Home() {
   }, []);
 
   return (
-    <div className='mx-auto w-8/12 mt-4 py-5 px-32 h-fit shadow-lg bg-gradient-to-br from-sky-400 to-blue-700 shadow-blue-300'>
+    <div className='mx-auto w-8/12 my-10 py-5 px-32 h-fit shadow-lg bg-gradient-to-br from-yellow-400 to-blue-600 shadow-blue-300 rounded-lg'>
       <Header />
       <SearchCity />
       <CurrentTimeDate />

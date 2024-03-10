@@ -20,12 +20,16 @@ function TemperatureDetails() {
 
     return (
         <div>
-            <div className='flex items-center justify-center my-4 py-2 text-yellow-400'>
-                <p className='text-xl'>{weatherData.weatherCode}</p>
+            <div className='flex items-center justify-center my-4 py-2 text-2xl text-gray-700 font-semibold'>
+                <p className='flex items-center justify-center'>{weatherData.weatherCode}</p>
             </div>
 
             <div className='flex flex-row items-center justify-between my-4 py-2'>
-                <UilCircle size={25} className='text-yellow-500 bg-yellow-500 rounded-full'></UilCircle>
+               <span className='flex items-center justify-between'>
+               <UilCircle size={40} className='text-[#e86211] bg-[#e86211] rounded-full mx-1'></UilCircle>
+               <UilClouds size={60} className= 'text-blue-400 mx-1'></UilClouds>
+               <UilWind size={40} className= 'mx-1'></UilWind>
+                </span> 
                 <p className='text-5xl text-white'>{weatherData.temperature} °{(units === "metric") ? 'C' : 'F'}</p>
                 <div className='flex flex-col space-y-2'>
                     <WeatherDetail

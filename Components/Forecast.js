@@ -1,13 +1,7 @@
 import React from 'react'
 import {
     UilTemperature,
-    UilTear,
     UilWind,
-    UilSun,
-    UilSunset,
-    UilArrowUp,
-    UilArrowDown,
-    UilBrightness,
     UilEye
 } from '@iconscout/react-unicons';
 import { useSelector } from 'react-redux';
@@ -27,7 +21,6 @@ function Forecast(props) {
         const ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
         hours = hours ? hours : 12; // Handle midnight (0 hours)
-    
         return `${dayName}, ${hours}:${minutes}:${seconds} ${ampm}`;
     }
 

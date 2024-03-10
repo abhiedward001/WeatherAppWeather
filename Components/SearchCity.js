@@ -7,7 +7,7 @@ import { updateCity, updateData, updateUnit } from '../Store/weatherSlice';
 
 function SearchCity() {
     const dispatch = useDispatch();
-
+    const city = useSelector(store => store.weather.city);
     //Function for handling live location logic
     const handleLocationClick = async () => {
         if (navigator.geolocation) {
@@ -41,7 +41,7 @@ function SearchCity() {
     }
 
     return (
-        <div className='flex flex-row justify-center my-5'>
+        <div className='flex flex-row justify-center my-20'>
             <div className='flex flex-row w-3/4 items-center justify-center space-x-4'>
                 <input
                     type='text'
@@ -54,9 +54,9 @@ function SearchCity() {
                 <button onClick={handleLocationClick}><UilUserLocation size={25} className='text-white cursor-pointer transform ease-out hover:scale-125' /></button>
             </div>
             <div className='flex flex-row w-1/4 items-center justify-center'>
-                <button className='text-white text-xl font-medium' onClick={() => cityDataHandler(inputCity, "metric")}>°C</button>
+                <button className='text-white text-xl font-medium' onClick={() => cityDataHandler(city, "metric")}>°C</button>
                 <p className='text-white mx-2'>|</p>
-                <button className='text-white text-xl font-medium' onClick={() => cityDataHandler(inputCity, "imperial")}>°F</button>
+                <button className='text-white text-xl font-medium' onClick={() => cityDataHandler(city, "imperial")}>°F</button>
             </div>
         </div>
     );
