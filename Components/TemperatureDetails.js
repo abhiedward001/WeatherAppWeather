@@ -1,7 +1,5 @@
 import React from 'react'
 import { UilCircle } from '@iconscout/react-unicons'
-import { fetchWeatherData } from '../Utils/apiService'
-import {apiCall} from '../Utils/FetchData';
 import { useSelector } from 'react-redux';
 import {
     UilTemperature,
@@ -10,15 +8,18 @@ import {
     UilSun,
     UilSunset,
     UilArrowUp,
-    UilArrowDown
+    UilArrowDown,
+    UilBrightness,
+    UilEye
 } from "@iconscout/react-unicons";
 
 import Forecast from './Forecast';
 
+
 function TemperatureDetails() {
     
-    // const apiUrl=fetchWeatherData('realtime',{location:"bangalore"});
-    // apiCall(apiUrl);
+   
+    
     const weatherData = useSelector(store => store.weather.data);
 
 
@@ -37,7 +38,7 @@ function TemperatureDetails() {
 
                     <div className='flex font-light text-sn items-center justify-center'>
                         <UilTemperature size={18} className='mr-1'></UilTemperature>
-                        Real fell:
+                        Temp:
                         <span className='font-medium ml-1'>{weatherData.temperature}°</span>
                     </div>
                     <div className='flex font-light text-sn items-center justify-center'>
@@ -50,7 +51,16 @@ function TemperatureDetails() {
                         Wind Speed:
                         <span className='font-medium ml-1'>{weatherData.windSpeed}</span>
                     </div>
-
+                    <div className='flex font-light text-sn items-center justify-center'>
+                        <UilBrightness size={18} className='mr-1'></UilBrightness>
+                        UvIndex:
+                        <span className='font-medium ml-1'>{weatherData.uvIndex}</span>
+                    </div>
+                    <div className='flex font-light text-sn items-center justify-center'>
+                        <UilEye size={18} className='mr-1'></UilEye>
+                        Visibility:
+                        <span className='font-medium ml-1'>{weatherData.visibility}</span>
+                    </div>
                 </div>
 
             </div>

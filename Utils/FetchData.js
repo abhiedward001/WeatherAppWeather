@@ -1,5 +1,6 @@
 import {codeConfig} from '../Utils/weatherCodeConfig';
 
+// This function is used for making API call for particular city and Accumulate all data in single js object
 export const apiCall = async (api) => {
     const data = await fetch(api);
     const jsonData = await data.json();
@@ -8,12 +9,11 @@ export const apiCall = async (api) => {
     codeConfig.map(codeData=>{
         for (const key in codeData) {
             if(key==dataAccumated.weatherCode){
-                // console.log(`${key}: ${codeData[key]}`);
                 dataAccumated.weatherCode=codeData[key];
                 break;
             }
           }
-    })
+    });
     console.log(dataAccumated);
     return dataAccumated;
 };
