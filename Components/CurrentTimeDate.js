@@ -13,7 +13,7 @@ function CurrentTimeDate() {
             <p className='text-white text-lg font-light'>{updatedDateAndTime}</p>
         </div>
         <div className='flex items-center flex-wrap justify-center my-8'>
-           <p className='text-white text-2xl font-semibold'>{weatherData?.cityName}</p>
+           <p className='text-white text-2xl font-semibold'>{(weatherData?.cityName===undefined)?"Your City":`${weatherData?.cityName}`}</p>
         </div>
     </div>
   )
