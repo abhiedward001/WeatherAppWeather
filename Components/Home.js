@@ -20,7 +20,6 @@ function Home() {
       }
 
       const jsonData = await data.json();
-      // console.log(jsonData.timelines);
       const forCastData=[];
       let { daily, hourly, minutely } = jsonData.timelines;
       daily = daily.slice(1, 6).map((inst) => {
@@ -53,8 +52,6 @@ function Home() {
       forCastData.push(hourly);
       forCastData.push(daily);
       
-      
-      // console.log(forCastData);
       dispatch(updateForecast(forCastData));
     } catch (error) {
       alert(`Error: ${error.message}`);
@@ -66,7 +63,7 @@ function Home() {
   }, []);
 
   return (
-    <div className='mx-auto w-8/12 my-10 py-5 px-32 h-fit shadow-lg bg-gradient-to-br from-yellow-400 to-blue-600 shadow-blue-300 rounded-lg'>
+    <div className='mx-auto w-full md:w-8/12 my-10 py-5 px-5 md:px-32 h-fit shadow-lg bg-gradient-to-br from-yellow-400 to-blue-600 shadow-blue-300 rounded-lg'>
       <Header />
       <SearchCity />
       <CurrentTimeDate />
